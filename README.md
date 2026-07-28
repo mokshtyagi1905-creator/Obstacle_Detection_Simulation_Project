@@ -6,20 +6,20 @@ An Arduino-based obstacle detection system built in **Tinkercad** using the **HC
 
 ## 📌 Project Overview
 
-This project simulates an obstacle detection system similar to those used in parking assistance and basic robotic navigation. The Arduino reads distance data from an HC-SR04 ultrasonic sensor and classifies the surroundings into three safety zones.
+This project simulates an obstacle detection system similar to those used in parking assistance systems and basic robotic navigation. The Arduino continuously reads distance data from the HC-SR04 ultrasonic sensor and classifies the surroundings into different safety zones.
 
 ---
 
 ## ✨ Features
 
 - 📏 Continuous distance measurement using the HC-SR04 Ultrasonic Sensor.
-- 🟢 Green LED indicates a **SAFE** zone.
-- 🟡 Yellow LED indicates a **WARNING** zone.
-- 🔴 Red LED indicates a **DANGER** zone.
+- 🟢 Green LED indicates the **SAFE** zone.
+- 🟡 Yellow LED indicates the **WARNING** zone.
+- 🔴 Red LED indicates the **DANGER** zone.
 - 🔔 Slow buzzer beeps in the warning zone.
 - 🚨 Fast buzzer beeps in the danger zone.
-- 💻 Live distance and status updates through the Serial Monitor.
-- ⚠️ Displays an **Invalid Reading** message when no valid distance is available.
+- 💻 Displays live distance and status updates on the Serial Monitor.
+- ⚠️ Detects invalid sensor readings and displays an appropriate message.
 
 ---
 
@@ -41,56 +41,22 @@ This project simulates an obstacle detection system similar to those used in par
 
 | Distance | Status | LED | Buzzer |
 |----------|--------|-----|--------|
-| Greater than 30 cm | SAFE | 🟢 Green | OFF |
-| 15–30 cm | WARNING | 🟡 Yellow | Slow Beep |
-| 0–15 cm | DANGER | 🔴 Red | Fast Beep |
+| Greater than **30 cm** | SAFE | 🟢 Green | OFF |
+| **15–30 cm** | WARNING | 🟡 Yellow | Slow Beep |
+| **0–15 cm** | DANGER | 🔴 Red | Fast Beep |
 | Invalid Reading | Invalid Reading | All LEDs OFF | OFF |
 
 ---
 
 ## ⚙️ Working Principle
 
-1. Arduino sends a **10 µs trigger pulse** to the HC-SR04.
+1. Arduino sends a **10 µs trigger pulse** to the HC-SR04 ultrasonic sensor.
 2. The sensor emits ultrasonic waves.
-3. The waves reflect from an obstacle and return to the sensor.
-4. Arduino measures the echo time using `pulseIn()`.
-5. The distance is calculated.
-6. The Arduino determines the appropriate safety zone.
-7. LEDs, buzzer, and Serial Monitor are updated continuously.
-
----
-
-## 📷 Project Preview
-
-### 🔧 Circuit Diagram
-
-![Circuit](Images/Circuit.png)
-
-### 🟢 SAFE Mode
-
-![Safe Mode](Images/Safe_Mode.png)
-
-### 🟡 WARNING Mode
-
-![Warning Mode](Images/Warning_Mode.png)
-
-### 🔴 DANGER Mode
-
-![Danger Mode](Images/Danger_Mode.png)
-
-### 💻 Serial Monitor
-
-![Serial Monitor](Images/SerialMonitor.png)
-
----
-
-## 🎥 Demo Video
-
-Place your demonstration video in the `Videos` folder.
-
-```
-Videos/Demo.mp4
-```
+3. The waves strike an obstacle and reflect back.
+4. Arduino measures the echo pulse duration using `pulseIn()`.
+5. The measured time is converted into distance.
+6. The Arduino compares the distance with predefined safety thresholds.
+7. LEDs, buzzer, and Serial Monitor are updated according to the detected zone.
 
 ---
 
@@ -127,14 +93,14 @@ Obstacle-Detection-Simulator/
 - Conditional Statements (`if`, `else if`, `else`)
 - Serial Communication
 - Sensor Interfacing
-- Embedded System Logic
+- Embedded Systems Basics
 - Robotics Fundamentals
 
 ---
 
 ## ⚠️ Known Limitation
 
-The HC-SR04 sensor has a minimum measuring distance of approximately **2 cm**. In Tinkercad, placing an object closer than this minimum distance may produce an invalid large distance value instead of a valid measurement. In this version, such readings may be interpreted as **SAFE** because they exceed the defined safe threshold. This behavior is a limitation of the simulator and will be improved in a future version.
+The HC-SR04 ultrasonic sensor has a minimum measuring distance of approximately **2 cm**. In Tinkercad, placing an object closer than this minimum distance may produce an unusually large distance value instead of a valid measurement. In this version, such readings may be interpreted as **SAFE** because they exceed the defined safe threshold. This behavior is a limitation of the simulator and will be improved in future versions.
 
 ---
 
@@ -145,6 +111,7 @@ The HC-SR04 sensor has a minimum measuring distance of approximately **2 cm**. I
 - Add an LCD or OLED display.
 - Add servo motor scanning for wider obstacle detection.
 - Convert the project into an autonomous obstacle-avoiding robot.
+- Add configurable distance thresholds using buttons or a potentiometer.
 
 ---
 
