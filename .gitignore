@@ -1,1 +1,7 @@
+# VS Code settings
+.vscode/
 
+# Temporary files
+*.tmp
+*.bak
+*.log
